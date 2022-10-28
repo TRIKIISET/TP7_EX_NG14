@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { EmployeService } from '../employe.service';
 
 @Component({
@@ -19,7 +19,8 @@ export class EmployeComponent implements OnInit {
         matricule:[0],
         nom:[''],
         fonction:['PDG'],
-        departement:['Finance']
+        departement:['Finance'],
+        diplomes:this.fb.array([])
     })
   }
 
@@ -28,5 +29,13 @@ export class EmployeComponent implements OnInit {
   }
   onReset(){
     this.employeForm.reset({fonction:'Secrétaire', departement:'IT'})
+    this.lesDiplomes.clear();
+  }
+
+  get lesDiplomes(){
+    return this.employeForm.get('diplomes') as FormArray;
+  }
+  ajouterDiplome(){
+    this.lesDiplomes.push(this.fb.control(''));
   }
 }
