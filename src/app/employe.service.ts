@@ -8,10 +8,11 @@ export class EmployeService {
 
   private lesEmployes: Employe[] = [];
   getEmployes() {
-
+    return this.lesEmployes;
   }
 
   addNewEmploye(emp: Employe) {   
+    this.lesEmployes.push(emp);
   }
   constructor() { }
 }

@@ -1,30 +1,31 @@
 <div class="container">
     <h2> Ajout d'un employé</h2>
-    <form>
+    <form [formGroup]="employeForm" (ngSubmit)="onSubmit()">
         <div>
             <label> Donnez le matricule</label>
-            <input type="number" class="form-control">
+            <input type="number" class="form-control" formControlName="matricule">
         </div>
 
         <div>
             <label> Donnez le nom</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" formControlName="nom">
         </div>
 
         <div>
             <label> Donnez la fonction</label>
-            <select class="form-select">
- 
+            <select class="form-select" formControlName="fonction">
+                <option *ngFor="let f of fonctions" [value]="f"> {{f}}</option>
             </select>
         </div>
 
         <div>
             <label> Choisissez le département</label>
-            <input type="radio" name="dep" value="IT"> IT
-            <input type="radio" name="dep" value="Finance"> Finance
+            <input type="radio" name="dep" value="IT" formControlName="departement"> IT
+            <input type="radio" name="dep" value="Finance"  formControlName="departement"> Finance
         </div>
 
         <button class="btn btn-primary">Ajouter Employé</button>
-        <input type="button" class="btn btn-secondary" value="Vider">
+        <input type="button" class="btn btn-secondary" value="Vider" (click)="onReset()">
+
     </form>
 </div>
