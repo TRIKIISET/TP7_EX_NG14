@@ -22,6 +22,7 @@ export class EmployeComponent implements OnInit {
         departement:['Finance'],
         diplomes:this.fb.array([])
     })
+
   }
 
   onSubmit(){
